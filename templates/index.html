@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Scraper</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Job Scraper</h1>
+        <form method="POST">
+            <input type="text" name="search_term" placeholder="Enter search term (e.g., python, javascript, java)" required>
+            <button type="submit">Search</button>
+        </form>
+        
+        {% if jobs %}
+            <h2>Results for "{{ search_term }}"</h2>
+            {% for job in jobs %}
+                <article>
+                    <h3>{{ job.title }}</h3>
+                    <p>Company: {{ job.company }}</p>
+                    <p>Source: {{ job.source }}</p>
+                </article>
+            {% endfor %}
+        {% endif %}
+    </main>
+</body>
+</html>
